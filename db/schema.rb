@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161104160508) do
+ActiveRecord::Schema.define(version: 20161122155551) do
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "provider"
@@ -56,6 +56,18 @@ ActiveRecord::Schema.define(version: 20161104160508) do
 
   add_index "comments", ["review_id"], name: "index_comments_on_review_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "movies", force: :cascade do |t|
+    t.string   "name"
+    t.string   "director"
+    t.string   "description"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
 
   create_table "reviews", force: :cascade do |t|
     t.string   "title",                   default: "",  null: false

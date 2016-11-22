@@ -1,0 +1,25 @@
+<h2>List Movies</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Image</th>
+        <th>Director</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+  <tbody>
+    <% @movies.each do |movie| %>
+      <tr>
+        <td><%= link_to movie.name,movie,:target => '_blank' %></td>
+        <td>
+            <div style="width:200px;height:auto">
+				<%= image_tag @movie.image.url(:medium) %>
+			</div>
+        </td>
+        <td><%= movie.director%></td>
+        <td><%= movie.description%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

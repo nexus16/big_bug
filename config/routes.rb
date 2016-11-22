@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     resources :reviews
     resources :users
     resources :categories
+    resources :movies
   end
   resources :reviews do
     member do
