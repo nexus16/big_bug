@@ -11,14 +11,14 @@
   <tbody>
     <% @movies.each do |movie| %>
       <tr>
-        <td><%= link_to movie.name,movie,:target => '_blank' %></td>
+        <td><%= link_to movie.name,admin_movie_path(movie) %></td>
         <td>
             <div style="width:200px;height:auto">
-				<%= image_tag @movie.image.url(:medium) %>
+				<%= image_tag movie.image.url(:medium) %>
 			</div>
         </td>
-        <td><%= movie.director%></td>
-        <td><%= movie.description%></td>
+        <td><%= movie.director %></td>
+        <td><%= movie.description %></td>
       </tr>
     <% end %>
   </tbody>
