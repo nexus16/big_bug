@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161122155551) do
+ActiveRecord::Schema.define(version: 20161122192058) do
 
   create_table "authorizations", force: :cascade do |t|
     t.string   "provider"
@@ -67,7 +67,10 @@ ActiveRecord::Schema.define(version: 20161122155551) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "category_id"
   end
+
+  add_index "movies", ["category_id"], name: "index_movies_on_category_id"
 
   create_table "reviews", force: :cascade do |t|
     t.string   "title",                   default: "",  null: false
@@ -84,6 +87,7 @@ ActiveRecord::Schema.define(version: 20161122155551) do
     t.integer  "cached_weighted_total",   default: 0
     t.float    "cached_weighted_average", default: 0.0
     t.integer  "category_id"
+    t.integer  "movie_id"
   end
 
   add_index "reviews", ["cached_votes_down"], name: "index_reviews_on_cached_votes_down"
@@ -94,6 +98,7 @@ ActiveRecord::Schema.define(version: 20161122155551) do
   add_index "reviews", ["cached_weighted_score"], name: "index_reviews_on_cached_weighted_score"
   add_index "reviews", ["cached_weighted_total"], name: "index_reviews_on_cached_weighted_total"
   add_index "reviews", ["category_id"], name: "index_reviews_on_category_id"
+  add_index "reviews", ["movie_id"], name: "index_reviews_on_movie_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

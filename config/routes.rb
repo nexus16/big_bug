@@ -7,7 +7,15 @@ Rails.application.routes.draw do
     resources :reviews
     resources :users
     resources :categories
-    resources :movies
+    resources :movies do 
+      resources :reviews do
+        member do
+          get 'like', to: "reviews#like"
+          get 'unlike', to: "reviews#unlike"
+        end
+        resources :comments
+      end
+    end
   end
   resources :reviews do
     member do

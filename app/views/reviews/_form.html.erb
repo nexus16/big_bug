@@ -10,18 +10,18 @@
       </ul>
     </div>
   <% end %>
-  <div class="form-group">
+  <!-- <div class="form-group">
     <%= f.label :image %>    
     <%= f.file_field :image,{:onchange => "readURL(this)"} %>
-  </div>
+  </div> -->
   <div class="form-group">
     <%= f.label :title %>
     <%= f.text_field :title, autofocus: true, class: "form-control" %>
   </div>
-  <div class="form-group">
+  <!-- <div class="form-group">
     <%= f.label :category_id %>
     <%=f.collection_select(:category_id, Category.all, :id, :name, {prompt: true},{:class=>'form-control'})%>
-  </div>
+  </div> -->
   <div class="form-group">
     <%= f.label :content %>
     <%= f.bootsy_area :content, class: "form-control",rows: 25 %>
