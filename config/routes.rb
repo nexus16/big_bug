@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   end
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   namespace :admin do
-    resources :reviews
     resources :users
     resources :categories
     resources :movies do 
@@ -17,12 +16,14 @@ Rails.application.routes.draw do
       end
     end
   end
-  resources :reviews do
-    member do
-      get 'like', to: "reviews#like"
-      get 'unlike', to: "reviews#unlike"
+  resources :movies do 
+    resources :reviews do
+      member do
+        get 'like', to: "reviews#like"
+        get 'unlike', to: "reviews#unlike"
+      end
+      resources :comments
     end
-    resources :comments
   end
   
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'

@@ -33,17 +33,19 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.json
   def create
-    @review = current_user.reviews.new(review_params)
-
-    respond_to do |format|
-      if @review.save
-        format.html { redirect_to @review, notice: 'Review was successfully created.' }
-        format.json { render :show, status: :created, location: @review }
-      else
-        format.html { render :new }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
-      end
+    if current_user
+        @movie = Movie.find(params[:movie_id])
+        @review = @movie.reviews.create(review_params)
+        @review.user_id = current_user.id
+        @review.save
+        render movie_path(@movie)
     end
+
+
+
+
+
+
   end
 
   # PATCH/PUT /reviews/1
@@ -102,6 +104,6 @@ class ReviewsController < ApplicationController
     end
 
     def review_params
-      params.require(:review).permit(:image, :title, :content,:created_at,:category_id)
+      params.require(:review).permit(:title, :content,:created_at,:movie_id)
     end
 end

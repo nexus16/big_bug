@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :configure_account_update_params, if: :devise_controller?
   def after_sign_in_path_for(resource)
-    stored_location_for(resource) || reviews_path
+    stored_location_for(resource) || movies_path
   end
   protected
   def require_admin

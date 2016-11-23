@@ -1,0 +1,18 @@
+<p>
+	<span>name: </span>
+	<%= @movie.name %>
+</p>
+
+<p>
+	<%= image_tag @movie.image.url(:medium) %>
+</p>
+
+<%= link_to "Create new review",new_movie_review_path(@movie)	, :class => "btn btn-default" %>
+
+<% @movie.reviews.each do |review| %>
+		<p><%= review.title%> </p>
+		<% review.comments.each do|comment| %>
+			<p><strong><%= comment.body %></strong></p>
+		<% end %>
+		<hr>
+<% end %>
