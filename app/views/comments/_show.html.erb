@@ -7,12 +7,12 @@
                 
                 <%= comment.body %>
                 <% if comment.user == current_user %>
-                    <%= link_to '', [comment.review, comment],
+                    <%= link_to '', movie_review_comment_path(comment.review.movie, comment.review, comment),
                        data: {confirm: 'Are you sure?'},
                        :method => :delete,
                        :remote => true,
                        :class => 'delete glyphicon glyphicon-remove'
                        %>
-                    <%= link_to "", edit_review_comment_path(comment.review, comment), class: "delete glyphicon glyphicon-cog",remote: true  %>
+                    <%= link_to "", edit_movie_review_comment_path(comment.review.movie, comment.review, comment), class: "delete glyphicon glyphicon-cog",remote: true  %>
                 <% end %>
             </p>

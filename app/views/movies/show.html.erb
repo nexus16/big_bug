@@ -7,12 +7,14 @@
 	<%= image_tag @movie.image.url(:medium) %>
 </p>
 
-<%= link_to "Create new review",new_movie_review_path(@movie)	, :class => "btn btn-default" %>
+<%= link_to "Create new review", new_movie_review_path(@movie), :class => "btn btn-default" %>
 
 <% @movie.reviews.each do |review| %>
 		<p><%= review.title%> </p>
+		<%= link_to "edit review", edit_movie_review_path(review.movie, review), :class => "btn btn-default" %>
 		<% review.comments.each do|comment| %>
-			<p><strong><%= comment.body %></strong></p>
+			<%= render "comments/show", comment: comment %>
 		<% end %>
+		
 		<hr>
 <% end %>
