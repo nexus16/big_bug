@@ -10,11 +10,14 @@
 <%= link_to "Create new review", new_movie_review_path(@movie), :class => "btn btn-default" %>
 
 <% @movie.reviews.each do |review| %>
+		<p><strong><%= review.user.name %></strong></p>
 		<p><%= review.title%> </p>
 		<%= link_to "edit review", edit_movie_review_path(review.movie, review), :class => "btn btn-default" %>
-		<% review.comments.each do|comment| %>
-			<%= render "comments/show", comment: comment %>
-		<% end %>
-		
+		<div id="comments">
+			<% review.comments.each do|comment| %>
+				<%= render "comments/show", comment: comment %>
+			<% end %>
+		</div>
+		<%= render "comments/new", movie: review.movie, review: review %>
 		<hr>
 <% end %>
