@@ -26,6 +26,8 @@ Rails.application.routes.draw do
       resources :comments
     end
   end
+
+  resources :categories
   
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   root "static_pages#home"

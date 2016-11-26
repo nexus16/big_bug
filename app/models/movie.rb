@@ -5,4 +5,7 @@ class Movie < ActiveRecord::Base
   	validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
   	has_many :reviews
   	belongs_to :category
+  	def self.search(search)
+  		where("name LIKE ?", "%#{search}%")
+	end
 end
