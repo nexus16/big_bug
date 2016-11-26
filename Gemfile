@@ -25,6 +25,7 @@ gem 'omniauth-facebook'
 gem "omniauth-google-oauth2", "~> 0.2.1"
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'paperclip', '~> 4.2'
+gem 'ratyrate'
 group :development, :test do
   gem "sqlite3"
   gem "web-console", "2.0.0.beta3"

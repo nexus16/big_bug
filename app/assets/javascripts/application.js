@@ -15,3 +15,5 @@
 //= require bootstrap-sprockets
 //= require bootsy
 //= require_tree .
+//= require jquery.raty
+//= require ratyrate
