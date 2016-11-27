@@ -6,6 +6,7 @@
         <th>Image</th>
         <th>Director</th>
         <th>Description</th>
+        <th>Action</th>
       </tr>
     </thead>
   <tbody>
@@ -14,11 +15,12 @@
         <td><%= link_to movie.name,admin_movie_path(movie) %></td>
         <td>
             <div style="width:200px;height:auto">
-				<%= image_tag movie.image.url(:medium) %>
-			</div>
+				      <%= image_tag movie.image.url(:medium) %>
+			       </div>
         </td>
         <td><%= movie.director %></td>
         <td><%= movie.description %></td>
+        <td><%= link_to "", edit_admin_movie_path(movie),:class => 'fa fa-edit fa-2x' %><%= link_to '', admin_movie_path(movie),:class => 'fa fa-trash fa-2x', method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

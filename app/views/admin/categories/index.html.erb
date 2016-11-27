@@ -1,4 +1,4 @@
-<h2>List Review</h2>
+<h2>List category</h2>
   <table class="table">
     <thead>
       <tr>
@@ -19,5 +19,5 @@
     <% end %>
   </tbody>
 </table>
-<%= link_to "", new_admin_category_path,:class => 'fa fa-edit fa-2x' %>
+<%= link_to "Create Category", new_admin_category_path,:class => 'btn btn-default' %>
 <%= will_paginate @categories %>

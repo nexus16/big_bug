@@ -10,6 +10,6 @@ class MoviesController < ApplicationController
 	def show
 		@movie = Movie.find(params[:id])
 		@comment = Comment.new
-		@reviews = @movie.reviews
+		@review = Review.where user_id: current_user.id, movie_id: @movie.id
 	end
 end
