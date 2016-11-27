@@ -15,7 +15,10 @@
     <%= f.label :title %>
     <%= f.text_field :title, autofocus: true, class: "form-control" %>
   </div>
-  
+  <div class="form-group">
+    <%= f.label :Rate %>
+    <%= rating_for @review.movie, 'score', enable_half: true, disable_after_rate: false  %>
+  </div>
   <div class="form-group">
     <%= f.label :content %>
     <%= f.bootsy_area :content, class: "form-control",rows: 25 %>
