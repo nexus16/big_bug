@@ -24,7 +24,31 @@
 						<button type="button" class="menu-toggle"><i class="fa fa-bars"></i></button>
 						<ul class="menu">
 							<li class="menu-item <%=current_item_link root_path%>"><a href="">Home</a></li>
-							<li class="menu-item <%=current_item_link movies_path%>"><%=link_to t("application.movies"),movies_path%></li>
+							<li class="menu-item">
+								<ul class="menu">
+							      <li class="dropdown">
+								       <a class="dropdown-toggle"
+								           data-toggle="dropdown"
+								           href="#">
+								            Category
+								            <b class="caret"></b>
+								        </a>
+								        <ul class="dropdown-menu">
+								          
+											<% @categories.each do |category| %>
+								          <li class="menu-item <%=current_item_link admin_users_path%>">
+												<a href="categories/<%=category.id %>"><%= category.name %></a>
+								          </li>
+										 <% end %>
+
+
+						
+								        </ul>
+      								</li>
+    							</ul>
+							</li>
+							
+							
 					
 							<% if !current_user %>
 							<li class="menu-item <%=current_item_link new_user_registration_path%>"><%=link_to t("application.sign_up"),new_user_registration_path%></li>

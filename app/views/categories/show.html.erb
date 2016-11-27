@@ -1,0 +1,13 @@
+<h1><% @category.name %></h1>
+<div class="movie-list">
+	<% @category.movies.each_with_index do |movie,index| %>
+	<div class="movie">
+		<div class="item">
+			<figure class="movie-poster" ><a href="movies/<%=movie.id%>"><%= image_tag movie.image.url(:medium) %></a></figure>
+			<div class="description">
+				<div class="movie-title"><a href="movies/<%=movie.id%>"><%=movie.name%></a></div>
+			</div>
+		</div>
+	</div>
+	<%end%>
+</div> <!-- .movie-list -->

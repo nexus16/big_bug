@@ -1,2 +1,2 @@
-$('#comments').append("<%= escape_javascript(render 'show',comment: @comment) %>")
-$('#comment_body').val("");
+$('#comments-<%= @review.id%>').append("<%= escape_javascript(render 'show',comment: @comment) %>")
+$('.dkm-linh-<%= @review.id %>').val("");
