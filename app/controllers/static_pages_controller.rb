@@ -3,11 +3,16 @@ class StaticPagesController < ApplicationController
 	before_action :require_admin,only: [:manager_reviews]
   def home
         @new_movies = Movie.all
-        @most_rates = RatingCache.order(:avg => :desc).limit(4)
+        @most_rates = RatingCache.order(:avg => :desc).limit(8)
         @max_movies = []
         @most_rates.each do |most|
             @max_movies << Movie.find_by_id(most.cacheable_id)
         end
+    
+		@review = Review.where(user_id: current_user.id, movie_id: @movie.id) if user_signed_in?
+        
+        
+        
   end
   def profile
   	@user = current_user

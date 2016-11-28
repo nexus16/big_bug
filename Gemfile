@@ -31,7 +31,7 @@ group :development, :test do
   gem "web-console", "2.0.0.beta3"
   gem 'byebug'
 end
-
+gem 'owlcarousel-rails'
 group :development do
   gem 'spring'
 end

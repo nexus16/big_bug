@@ -13,7 +13,10 @@
  *= require bootstrap
  *= require bootsy
  *= require_tree .
+ *= require owl.carousel
+ *= require owl.theme
  */
+ 
 
 #search-form{
 	position: relative
@@ -25,4 +28,51 @@
 }
 a.fa:visited{
     color:#ffaa3c !important;
+}
+
+
+.latest-movie-slide {
+    margin-bottom: 30px;
+    border-radius: 5px;
+    overflow: hidden;
+    height: 520px;
+    margin: 0 10px;
+}
+
+.movie-at-home{
+    position: relative
+}
+.movie-at-home>.movie-at-home-info{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left: 0;
+    background-color: black;
+    opacity: 0.7;
+    display: none;
+}
+
+.movie-at-home>.movie-at-home-info>strong{
+        position: absolute;
+        font-size: 21px;
+        color: white;
+        position: absolute;
+        bottom: 55px;
+        width: 100%;
+        display: block;
+        left: 0;
+}
+.movie-at-home:hover .movie-at-home-info{
+    display: block;
+}
+
+.movie-at-home .star{
+    display: inline-flex;
+    position: absolute;
+    bottom: 28px;
+    left: 73px;
+}
+.latest-movie-slide .star{
+    left: 119px;
 }

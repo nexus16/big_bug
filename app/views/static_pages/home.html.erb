@@ -1,35 +1,51 @@
 					<div class="page">
 						<div class="row">
 							<div class="col-md-12">
-								<div class="slider">
-									<ul class="slides" >
-										<li><a href="#"><img src="dummy/slide/slide-1.jpg" alt="Slide 1"></a></li>
-										<li><a href="#"><img src="dummy/slide/slide-2.jpg" alt="Slide 2"></a></li>
-										<li><a href="#"><img src="dummy/slide/slide-3.jpg" alt="Slide 3"></a></li>
-										<li><a href="#"><img src="dummy/slide/slide-4.jpg" alt="Slide 4"></a></li>
-										<li><a href="#"><img src="dummy/slide/slide-5.jpg" alt="Slide 5"></a></li>
-										<li><a href="#"><img src="dummy/slide/slide-6.jpg" alt="Slide 6"></a></li>
-									</ul>
+								
+								<div class="owl-carousel">
+									<% @max_movies.each do |movie| %>
+										
+										<div class="latest-movie-slide movie-at-home">
+											<%= image_tag movie.image.url(:medium) %>
+											
+											<a href="movies/<%= movie.id%>" class="text-center movie-at-home-info">
+											<strong><%= movie.name%></strong>
+											<% if RatingCache.find_by_cacheable_id( movie.id ) != nil%>
+												 <div data-dimension="score" class="star" data-rating="<%=RatingCache.find_by_cacheable_id( movie.id ).avg %>" data-id="8" data-classname="Movie" data-readonly="true" data-enable-half="true" data-half-show="true" data-star-count="5" data-star-path="/assets" data-star-on="star-on.png" data-star-off="star-off.png" data-star-half="star-half.png" data-cancel="false" data-cancel-place="left"></div>
+											<%end%>
+										</a>
+										</div>
+									<%end%>
+
 								</div>
+								
 							</div>
-							
+							<script>
+							$(document).ready(function(){
+							   $(".owl-carousel").owlCarousel({
+ 
+							      autoPlay: 1500,
+							      items : 3,
+							      itemsDesktop : [1199,3],
+							      itemsDesktopSmall : [979,3]
+							 
+							  });
+							});
+							</script>
 						</div> <!-- .row -->
-						<div class="row">
-							<h1>Most rate movie</h1>
-							<% @max_movies.each do |movie| %>
-								<div class="col-sm-6 col-md-3">
-									<div class="latest-movie">
-										<a href="movies/<%= movie.id%>"><%= image_tag movie.image.url(:medium) %></a>
-									</div>
-								</div>
-							<%end%>
-						</div> <!-- .row -->
+						
 						<div class="row">
 							<h1>New movie</h1>
 							<% @new_movies.each do |movie| %>
 								<div class="col-sm-6 col-md-3">
-									<div class="latest-movie">
-										<a href="movies/<%= movie.id%>"><%= image_tag movie.image.url(:medium) %></a>
+									<div class="latest-movie movie-at-home">
+										<%= image_tag movie.image.url(:medium) %>
+										<a href="movies/<%= movie.id%>" class="text-center movie-at-home-info">
+											<strong><%= movie.name%></strong>
+											<% if RatingCache.find_by_cacheable_id( movie.id ) != nil%>
+												 <div data-dimension="score" class="star" data-rating="<%=RatingCache.find_by_cacheable_id( movie.id ).avg %>" data-id="8" data-classname="Movie" data-readonly="true" data-enable-half="true" data-half-show="true" data-star-count="5" data-star-path="/assets" data-star-on="star-on.png" data-star-off="star-off.png" data-star-half="star-half.png" data-cancel="false" data-cancel-place="left"></div>
+											<%end%>
+										</a>
 									</div>
 								</div>
 							<%end%>

@@ -325,7 +325,8 @@ form textarea {
 .latest-movie {
   margin-bottom: 30px;
   border-radius: 5px;
-  overflow: hidden; }
+  overflow: hidden;
+  height: 380px;}
   .latest-movie img {
     max-width: 100%;
     width: 100%;
