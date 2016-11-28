@@ -1,14 +1,14 @@
 
 
-<p>
+<p class="text-center">
 	<%= image_tag @movie.image.url(:medium) %>
 </p>
 <p>
-	<strong>name: </strong>
+	<strong>Movie: </strong>
 	<%= @movie.name %>
 </p>
 
-Score  : <%=  RatingCache.find_by_cacheable_id(@movie.id).avg %>
+
 
 <p>
 	<strong>Director: </strong>
@@ -19,7 +19,7 @@ Score  : <%=  RatingCache.find_by_cacheable_id(@movie.id).avg %>
 	<%= @movie.description %>
 </p>
 <div class="time">
-            Ngày tạo: <span>
+            Created at: <span>
                 <% if @movie.created_at > Time.now.beginning_of_day %>
                     <%="#{time_ago_in_words(@movie.created_at)} ago"%>  
                 <% else %>
@@ -28,22 +28,43 @@ Score  : <%=  RatingCache.find_by_cacheable_id(@movie.id).avg %>
             </span>
         </div>
 
+
+<hr>
 <% if user_signed_in? && @review.empty? %>	
 	<%= link_to "Create new review", new_movie_review_path(@movie), :class => "btn btn-default" %>
 <% end %>
-<hr>
-
+<br></br>
 <% @movie.reviews.each do |review| %>
-		<p><strong><%= review.user.name %></strong></p>
-		<p><%= review.title%> </p>
-		<% if current_user && current_user.id == review.user.id %>
-			<%= link_to "edit review", edit_movie_review_path(review.movie, review), :class => "btn btn-default" %>
+		<p>
+			<span class="avatar"><%= avatar review.user.avatar%></span>
+			<strong><%= review.user.name %></strong>:<span><%= review.title %></span>
+		</p>
+		
+		<p>
+			<%= review.content%> 
+			<% if current_user && current_user.id == review.user.id %>
+			<%= link_to "", edit_movie_review_path(review.movie, review), :class => "glyphicon glyphicon-cog" %>
 		<% end %>
-		<div id="comments-<%= review.id%>">
-			<% review.comments.each do|comment| %>
-				<%= render "comments/show", comment: comment %>
-			<% end %>
+			
+		</p>
+		
+		<div class="block-comment" id="block-comment-<%= review.id%>">
+			<div id="comments-<%= review.id%>">
+				<% review.comments.each do|comment| %>
+					<%= render "comments/show", comment: comment %>
+				<% end %>
+			</div>
+			<p  class="create-comment"><span>Reply</span></p>
+			<%= render "comments/new", movie: review.movie, review: review %>
 		</div>
-		<%= render "comments/new", movie: review.movie, review: review %>
-		<hr>
+		
+<script>
+	$(document).ready(function(){
+    $("#block-comment-<%= review.id %> .create-comment").click(function(){
+        $(this).css("display","none");
+        $("#block-comment-<%= review.id %> .new_comment").css("display","block");
+    });
+});
+</script>
 <% end %>
+

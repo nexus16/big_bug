@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :set_review, only: [:show, :like, :unlike]
+  before_action :set_review, only: [:show, :like, :unlike, :edit, :update]
    before_action :authenticate_user!, only: [:edit, :update, :destroy, :show]
   before_action :check_owned, only: [:edit, :update, :destroy]
   # GET /reviews
@@ -28,6 +28,7 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/1/edit
   def edit
+    @movie = Movie.find_by_id @review.movie_id
   end
 
   # POST /reviews
@@ -54,9 +55,10 @@ class ReviewsController < ApplicationController
   # PATCH/PUT /reviews/1
   # PATCH/PUT /reviews/1.json
   def update
+    @movie = Movie.find_by_id @review.movie_id
     respond_to do |format|
       if @review.update(review_params)
-        format.html { redirect_to @review, notice: 'Review was successfully updated.' }
+        format.html { redirect_to @movie, notice: 'Review was successfully updated.' }
         format.json { render :show, status: :ok, location: @review }
       else
         format.html { render :edit }
@@ -92,6 +94,8 @@ class ReviewsController < ApplicationController
   end
 
   private
+  
+  
     def set_review
       @review = Review.find(params[:id])
     end

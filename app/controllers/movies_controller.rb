@@ -10,6 +10,6 @@ class MoviesController < ApplicationController
 	def show
 		@movie = Movie.find(params[:id])
 		@comment = Comment.new
-		@review = Review.where user_id: current_user.id, movie_id: @movie.id
+		@review = Review.where(user_id: current_user.id, movie_id: @movie.id) if user_signed_in?
 	end
 end

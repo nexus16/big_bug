@@ -45,7 +45,7 @@ class Admin::MoviesController < ApplicationController
 	private
 
 	def movie_params
-		params.require(:movie).permit(:name,:director,:description,:image)
+		params.require(:movie).permit(:name,:director,:description,:image,:category_id)
 	end
 	def set_movie
       @movie = Movie.find(params[:id])

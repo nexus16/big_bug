@@ -1,5 +1,6 @@
 <p class="comments" id='comment<%=comment.id%>'>
     <% if comment.user %>
+        <span class="avatar"><%= avatar comment.user.avatar%></span>
         <strong><%= comment.user.name %> : </strong>
     <% else %>
         <strong>noname : </strong>
@@ -13,6 +14,6 @@
            :remote => true,
            :class => 'delete glyphicon glyphicon-remove'
            %>
-        <%= link_to "", edit_movie_review_comment_path(comment.review.movie, comment.review, comment), class: "delete glyphicon glyphicon-cog",remote: true  %>
+    <%#    <%= link_to "", edit_movie_review_comment_path(comment.review.movie, comment.review, comment), class: "delete glyphicon glyphicon-cog",remote: true  %> 
     <% end %>
 </p>

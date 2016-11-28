@@ -290,9 +290,11 @@ form textarea {
     overflow: hidden; }
   .slider img {
     max-width: 100%;
-    width: 100%;
-    height: auto;
-    display: block; }
+    width: auto;
+    height: 500px;
+    display: block; 
+    margin: auto;
+  }
   .slider .flex-direction-nav {
     list-style: none;
     z-index: 2;
