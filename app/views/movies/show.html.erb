@@ -16,7 +16,7 @@
 </p>
 <p>
 	<strong>Description: </strong>
-	<%= @movie.description %>
+	<%= @movie.description.html_safe %>
 </p>
 <div class="time">
             Created at: <span>
@@ -43,7 +43,7 @@ RATE  : <div data-dimension="score" class="star" data-rating="<%=RatingCache.fin
 		</p>
 		
 		<p>
-			<%= review.content%> 
+			<%= review.content.html_safe %>
 			<% if current_user && current_user.id == review.user.id %>
 			<%= link_to "", edit_movie_review_path(review.movie, review), :class => "glyphicon glyphicon-cog" %>
 		<% end %>
