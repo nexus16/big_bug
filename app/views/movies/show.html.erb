@@ -27,12 +27,14 @@
                 <% end %>
             </span>
         </div>
-
-
+        <% if RatingCache.find_by_cacheable_id(@movie.id) != nil%>
+RATE  : <div data-dimension="score" class="star" data-rating="<%=RatingCache.find_by_cacheable_id(@movie.id).avg %>" data-id="8" data-classname="Movie" data-readonly="true" data-enable-half="true" data-half-show="true" data-star-count="5" data-star-path="/assets" data-star-on="star-on.png" data-star-off="star-off.png" data-star-half="star-half.png" data-cancel="false" data-cancel-place="left"></div>
+<%end%>
 <hr>
 <% if user_signed_in? && @review.empty? %>	
 	<%= link_to "Create new review", new_movie_review_path(@movie), :class => "btn btn-default" %>
 <% end %>
+
 <br></br>
 <% @movie.reviews.each do |review| %>
 		<p>

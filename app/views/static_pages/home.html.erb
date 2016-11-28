@@ -15,6 +15,17 @@
 							
 						</div> <!-- .row -->
 						<div class="row">
+							<h1>Most rate movie</h1>
+							<% @max_movies.each do |movie| %>
+								<div class="col-sm-6 col-md-3">
+									<div class="latest-movie">
+										<a href="movies/<%= movie.id%>"><%= image_tag movie.image.url(:medium) %></a>
+									</div>
+								</div>
+							<%end%>
+						</div> <!-- .row -->
+						<div class="row">
+							<h1>New movie</h1>
 							<% @new_movies.each do |movie| %>
 								<div class="col-sm-6 col-md-3">
 									<div class="latest-movie">
@@ -23,6 +34,5 @@
 								</div>
 							<%end%>
 						</div> <!-- .row -->
-						
 					
 					</div>
