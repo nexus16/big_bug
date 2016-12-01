@@ -39,7 +39,12 @@ RATE  : <div data-dimension="score" class="star" data-rating="<%=RatingCache.fin
 <% @movie.reviews.each do |review| %>
 		<p>
 			<span class="avatar"><%= avatar review.user.avatar%></span>
-			<strong><%= review.user.name %></strong>:<span><%= review.title %></span>
+			<strong><%= review.user.name %>
+				        <% if Rate.find_by_rater_id_and_rateable_id(review.user.id,review.id) != nil%>
+ 						<div data-dimension="score" class="star" data-rating="<%=Rate.find_by_rater_id_and_rateable_id(review.user.id,review.id).stars %>" data-id="8" data-classname="Movie" data-readonly="true" data-enable-half="true" data-half-show="true" data-star-count="5" data-star-path="/assets" data-star-on="star-on.png" data-star-off="star-off.png" data-star-half="star-half.png" data-cancel="false" data-cancel-place="left"></div>
+<%end%>
+			</br>
+			<span><%= review.title %></span>
 		</p>
 		
 		<p>
